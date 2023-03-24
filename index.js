@@ -8,12 +8,13 @@ const app = express();
 app.use(express.json());
 
 TJO.init({
-  googleApiKey: "AIzaSyBmaOR9JPDGd2Zj-W78fc96fPabDqsT0VI",
+  googleApiKey: "AIzaSyBHd6EBmGvUHR70fkM_4psOIOT80BRiC4M",
 });
 
 app.get("/", async (req, res) => {
   try {
     const { json, lang } = req.body;
+    console.log({json, lang})
     const result = await TJO.translate(json, lang);
     console.log(result);
     return res.status(200).json({ data: result });
