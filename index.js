@@ -13,11 +13,8 @@ TJO.init({
 
 app.get("/", async (req, res) => {
   try {
-    const json = {
-        question: 'How are you??',
-        answer: 'I am good.'
-    };
-    const result = await TJO.translate(json, "hi");
+    const { json, lang } = req.body;
+    const result = await TJO.translate(json, lang);
     console.log(result);
     return res.status(200).json({ data: result });
   } catch (error) {
